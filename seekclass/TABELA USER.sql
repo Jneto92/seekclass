@@ -57,4 +57,5 @@ INSERT INTO MATERIAS(NOME, PROFESSOR, TURNO, SEMESTRE) VALUES
 ("REDES DE COMPUTADORES E INTERNET", "DIOGENES REIS", "V", 1);
 
 
-
+SELECT email, senha FROM usuarios
+WHERE email='jose.nascimento@estudante.ifb.edu.br' AND senha='040510';

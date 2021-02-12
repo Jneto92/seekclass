@@ -1,26 +1,37 @@
+//carregando rotas
 const express = require('express');
 const app = express();
 const handlebars = require('express-handlebars');
 const bodyParser = require('body-parser');
 const Usuario = require('./models/Usuario');
+const admin = require('./routers/admin');
+const path = require('path');
+
 
 //config
     //Body parser
-    app.use(bodyParser.urlencoded({extended: false}));
-    app.use(bodyParser.json());
+        app.use(bodyParser.urlencoded({extended: true}));
+        app.use(bodyParser.json());
     //template engine
-    app.engine('handlebars', handlebars({defaultLayout: 'main'}));
-    app.set('view engine', 'handlebars');
+        app.engine('handlebars', handlebars({defaultLayout: 'main'}));
+        app.set('view engine', 'handlebars');
+    //Public
+        app.use(express.static(path.join(__dirname, "public")));
 
 //rotas
-       
+    //app.use('/', admin);
+    app.get('/', (req, res)=>{
+        /*Usuario.findAll().then(function(user){
+            console.log(user)
+            res.render('test', {user: user});
+        });*/
 
+        res.render('login')
+    });
     app.get('/cadastrar', (req, res)=>{
         res.render('cadastro')
     });
-    app.get('/', (req, res)=>{
-        res.render('login')
-    });
+    
     app.get('/first', (req, res)=>{
         res.render('primeiroacesso')
     });
@@ -37,7 +48,37 @@ const Usuario = require('./models/Usuario');
         });
         
     });
+    app.post('/definirsenha', (req, res)=>{
+        console.log(req.body.email)
+        Usuario.update(
+            {senha:  req.body.senha},
+            { where:{email: req.body.email}}
+        ).then(()=>{
+            res.redirect('/');
+        }).catch((erro)=>{
+            res.send("Erro na atualização do usuário."+erro);
+        });
+    });
 
+    app.post('/auth', (req, res)=>{
+        Usuario.findOne({
+            where: {
+              email: req.body.email,
+              senha: req.body.senha
+            }
+          }).then((usuario)=>{
+             console.log(usuario) 
+             if(usuario){
+                res.redirect('/');
+             }else{
+                console.log("erro")
+                
+             }
+            
+        }).catch((erro)=>{
+            res.send("Erro na atualização do usuário."+erro);
+        });
+    });
 /*app.get("/",(req, res) => {
     //res.render("../views/index");
     res.sendFile(__dirname + "/html/index.html");
