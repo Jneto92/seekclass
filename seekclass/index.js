@@ -50,6 +50,7 @@ const path = require('path');
     });
     app.post('/definirsenha', (req, res)=>{
         console.log(req.body.email)
+        
         Usuario.update(
             {senha:  req.body.senha},
             { where:{email: req.body.email}}
@@ -58,6 +59,10 @@ const path = require('path');
         }).catch((erro)=>{
             res.send("Erro na atualização do usuário."+erro);
         });
+    });
+
+    app.get('/home', (req, res)=>{
+        res.render('home');
     });
 
     app.post('/auth', (req, res)=>{
@@ -69,7 +74,7 @@ const path = require('path');
           }).then((usuario)=>{
              console.log(usuario) 
              if(usuario){
-                res.redirect('/');
+                res.redirect('/home');
              }else{
                 console.log("erro")
                 
