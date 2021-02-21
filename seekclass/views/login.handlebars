@@ -6,11 +6,12 @@
 <div class="login-page">
     <div class="form">
         <form action="/auth" method="POST">
-            <input type="text" placeholder="Email" name="email"/>
-            <input type="password" placeholder="Senha" name="senha"/>
+            <input type="text" placeholder="Email" name="email" required autofocus/>
+            <input type="password" placeholder="Senha" name="senha" required/>
             <button type="submit" onclick="login()">Login</button>
         </form>
         <p class="message"> <a href="http://localhost:8080/first" >Primeiro acesso?</a></p>
-        <p class="message"> <a href="http://localhost:8080/cadastrar" >Cadastar</a></p>
+        <p class="message"> <a href="http://localhost:8080/esqueceusenha" >Esqueceu a senha?</a></p>
+        <!--<p class="message"> <a href="http://localhost:8080/cadastrar" >Cadastar</a></p>-->
     </div>
   </div>

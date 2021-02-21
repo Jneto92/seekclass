@@ -6,6 +6,9 @@ const bodyParser = require('body-parser');
 const Usuario = require('./models/Usuario');
 const admin = require('./routers/admin');
 const path = require('path');
+const alert = require('alert');
+const popup = require ('node-popup');
+
 
 
 //config
@@ -42,23 +45,47 @@ const path = require('path');
             email: req.body.email
         }).then(()=>{
             //res.send("Usuário cadastrado")
-            res.redirect('/login');
+            res.redirect('/');
         }).catch((erro)=>{
             res.send("Erro na criação do usuário."+erro);
         });
         
     });
+
     app.post('/definirsenha', (req, res)=>{
-        console.log(req.body.email)
+        Usuario.findOne({
+            where: {
+              email: req.body.email,
+              //senha: req.body.senha
+            }
+          }).then((usuario)=>{
+             console.log("senha:"+usuario['senha']);
+            if(usuario['senha'] != null){
+                console.log("erro");
+                alert("Senha já definida");
+                //res.send("Senha já definida");
+            }else{
+                if (req.body.senha==req.body.csenha){ 
+                    Usuario.update(
+                    {senha:  req.body.senha,
+                    status: true},//acrescentado dia 20/02, status após o primeiro acesso, 1 para senha foi criada, 0 ou null senha ainda n foi definida
+                    { where:{email: req.body.email}}
+                ).then(()=>{
+                    res.redirect('/');
+                }).catch((erro)=>{
+                    res.send("Erro na atualização do usuário."+erro);
+                });
         
-        Usuario.update(
-            {senha:  req.body.senha},
-            { where:{email: req.body.email}}
-        ).then(()=>{
-            res.redirect('/');
+                } else{}
+            } 
+             
+             
         }).catch((erro)=>{
-            res.send("Erro na atualização do usuário."+erro);
+            res.send("Senha já foi definida"+erro);//acrescentado dia 22/02 
         });
+
+            
+        
     });
 
     app.get('/home', (req, res)=>{
@@ -71,45 +98,53 @@ const path = require('path');
               email: req.body.email,
               senha: req.body.senha
             }
-          }).then((usuario)=>{
+        }).then((usuario)=>{
              console.log(usuario) 
              if(usuario){
+                alert("Login feito com sucesso.");
                 res.redirect('/home');
              }else{
+                res.send("senha incorreta!");
+                
                 console.log("erro")
                 
              }
             
         }).catch((erro)=>{
-            res.send("Erro na atualização do usuário."+erro);
+            res.send("Erro na autenticação do usuário."+erro);
         });
     });
-/*app.get("/",(req, res) => {
-    //res.render("../views/index");
-    res.sendFile(__dirname + "/html/index.html");
-    
-});
+    //Acrescentado 20/02 
+    //rota para página esqueceu a senha
+    app.get('/esqueceusenha', (req, res)=>{
+        res.render('redefinirsenha');
+    });
+    //rota de requisição para trocar a senha
+    app.post('/redefinirsenha', (res, req)=>{
+        Usuario.findOne({
+            where: {
+              email: req.body.email,
+              //senha: req.body.senha
+            }
+        }).then((usuario)=>{
+             console.log("status"+usuario['status']); 
+             /*if(usuario){
+                alert("Login feito com sucesso.");
+                res.redirect('/home');
+             }else{
+                res.send("senha incorreta!");
+                
+                console.log("erro")
+                
+             }*/
+            
+        }).catch((erro)=>{
+            res.send("Erro na autenticação do usuário."+erro);
+        });
+    });
 
-app.get("/cadastro",(req, res) => {
-    //res.render("../views/index");
-    res.sendFile(__dirname + "/html/cadastro.html");
-    
-});
 
-app.get("/senha",(req, res) => {
-    //res.render("../views/index");
-    res.sendFile(__dirname + "/html/senha.html");
-    
-});
-app.get("/home",(req, res) => {
-    //res.render("../views/index");
-    res.sendFile(__dirname + "/html/paginainicial.html");
-    
-});
 
-function cadastrar(){
-    res.sendFile(__dirname + "/html/cadastro.html");
-};*/
 app.listen(8080, () => {
     console.log('Executando')
 });

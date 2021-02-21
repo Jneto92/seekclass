@@ -31,6 +31,7 @@ INSERT INTO USUARIOS(NOME, EMAIL) VALUES
     "José Augusto Chaves Izabel"),
     ("mikaela.pereira@estudante.ifb.edu.br",
     "Mikaela Brito Pereira");
+    //brenda.teixeira@estudante.ifb.edu.br;
 
 
 
