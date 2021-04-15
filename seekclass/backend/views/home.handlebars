@@ -1,0 +1,140 @@
+<link rel="stylesheet" href="/css/style.css">
+
+<div>
+    <h1 class="titulo">SeekClass</h1>
+    <form class="d-flex">
+        <input id="pesq" class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-success" type="submit">Search</button>
+    </form>
+</div>
+
+
+<!--<nav class="navbar navbar-light bg-light">
+    <div class="container-fluid">
+        <a class="navbar-brand"><b class="titulo">SeekClass</b></a>
+        <form class="d-flex">
+            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-success" type="submit">Search</button>
+        </form>
+    </div>
+</nav>
+-->
+
+
+<!--<div class="dropdown" class="divMenu">
+    <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown"
+        aria-expanded="false">
+        Menu
+    </a>
+
+    <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+        <li><a class="dropdown-item" href="#">Painel de horário</a></li>
+        <li><a class="dropdown-item" href="#">Professores</a></li>
+        <li><a class="dropdown-item" href="#">Mapa</a></li>
+    </ul>
+</div>
+-->
+<div>
+    <ul class="menuDrop">
+        <li><a href="#">Menu</a>
+            <ul>
+                <li><a href="#">Painel de horário</a></li>
+                <li><a href="#">Professores</a></li>
+                <li><a href="#">Mapa</a></li>
+            </ul>
+        </li>
+
+    </ul>
+</div>
+
+
+
+
+
+<h2 class="titulo2"><b>Bem vindo!</b></h2><br />
+<center>
+    <div>
+        <p id="turma"><B>Selecione a turma:</B>
+            <select>
+                <option value="">Escolha uma turma</option>
+                <option value="TSIV1A">TSIV1A</option>
+                <option value="TSIN1A">TSIN1A</option>
+                <option value="TSIV2A">TSIV2A</option>
+                <option value="TSIN2A">TSIN2A</option>
+                <option value="TSIV3A">TSIV3A</option>
+                <option value="TSIN3A">TSIN3A</option>
+                <option value="TSIV4A">TSIV4A</option>
+                <option value="TSIN4A">TSIN4A</option>
+                <option value="TSIV5A">TSIV5A</option>
+                <option value="TSIN5A">TSIN5A</option>
+            </select>
+            <form action="/tbMateria" method="POST">
+                <button onclick="" name="">Selecionar</button>
+            </form>
+        </p>
+    </div>
+
+</center>
+
+
+
+<center>
+    <div>
+        <table border="1" class="tbHorario">
+
+            <tr border="1">
+                <th>Horário</th>
+                <th>Segunda</th>
+                <th>Terça</th>
+                <th>Quarta</th>
+                <th>Quinta</th>
+                <th>Sexta</th>
+                <th>Sábado</th>
+            </tr>
+            <tr>
+                <th name="1h">14hs as 15hs</br> 19hs as 20hs</th>
+
+                <td name="seg1h" id="seg1h">A</td>
+                <td name="ter1h"></td>
+                <td name="qua1h"></td>
+                <td name="qui1h"></td>
+                <td name="sex1h"></td>
+                <td name="sab1h"></td>
+
+            </tr>
+            <tr>
+                <th name="1h">15hs as 16hs</th>
+                <td></td>
+                <td></td>
+                <td>Comércio Eletrônico</td>
+                <td>Trabalho de conclusão de curso</td>
+                <td>Estatística</td>
+                <td></td>
+            </tr>
+
+            <tr>
+                <th>18h30 as 20h</th>
+                <td>Tópicos em TI</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+
+            <tr>
+                <th>20h20 as 22h</th>
+                <td>Tópicos em TI</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+
+
+
+        </table>
+
+    </div>
+</center>

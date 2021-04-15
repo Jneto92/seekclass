@@ -1,0 +1,21 @@
+MELHORAR DESIGN DA OUTRAS PÁGINAS (bootstrap);
+*CRIAR TABELA DE HORARIOS;
+*CRIAR TABELA DE USUÁRIOS; feito
+CIAR TABELA MATERIAS;
+CRIAR TABELA TURMA;
+*CRIAR PÁGINA DE CRIAR SENHAS(ACESSO PELA PRIMEIRA VEZ); feito
+*CRIAR ROTAS DE NAVEGAÇÃO; feito
+*CRIAR AUTENTICAÇÃO DE LOGIN; feito
+*criar coluna status tipo boolean; feito
+pesquisar sobre gerar um link de recuperação de senha e enviar pro usuário;
+pesquisar como criar um janela para notificações de restrições;
+comentar o código;
+
+
+
+caminho para o banco de dados mysql
+C:\ProgramData\MySQL\MySQL Server 8.0\Data\sistemaseekclass
+mysql -h localhost -u root -p
+
+
+create table gradePessoal

@@ -1,0 +1,98 @@
+*{margin: 0; padding: 0;}
+.titulo{
+  position: absolute;
+  color: #45a045;
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  font-size: 30px;
+}
+#pesq{
+  margin-left: 80%;
+  position: relative;
+  width: 200px;
+}
+table, th, td, tr{
+  border: 3px solid blue;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  color: black;
+  width: 900px;
+  
+
+}
+td{
+  text-align: center;
+  vertical-align: top;
+  height: 100px;
+  background-color: #92db92;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+th{
+  background-color: #45a045;
+  color: white;
+}
+.titulo2{
+  
+  color: #45a045;
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  font-size: 30px;
+  font-style: italic;
+  text-align: center;
+}
+ul{
+  text-align: center;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+li{
+  text-align: center;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  width: 200px;
+}
+.menuDrop{
+  width: 200px;
+  list-style: none;
+  border: 1px solid white;
+  
+  
+}
+.menuDrop li{
+  position: relative;
+  
+  border-right: 1px solid white;
+}
+.menuDrop li a{
+  color: #333;
+  text-decoration: none;
+  padding: 5px 1px;
+  display: block;
+}
+.menuDrop li a:hover{
+  background-color: white;
+  color: black;
+  
+}
+.menuDrop li ul{
+  position: absolute;
+  top: 25px;
+  left: 0;
+  background-color: rgb(226, 243, 166);
+  display: none;
+}
+
+.menuDrop li:hover ul, .menuDrop li.hover ul{
+  display: block;
+}
+.menuDrop li ul li{
+  border: 1px solid #000;
+  display: block;
+  
+}
+#turma{
+  text-align: center;
+  font-size: 20px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  color: rgb(12, 49, 7);
+  
+}
